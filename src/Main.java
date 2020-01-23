@@ -17,7 +17,7 @@ public class Main {
             }
             if(i%3==0){
                 dp[i]=Math.min(dp[i],dp[i/3]+1);
-            }
+            }//
         }
         System.out.print(dp[n]);
     }
