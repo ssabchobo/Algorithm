@@ -4,21 +4,24 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        int n, i;
-        n = input.nextInt();
-        int dp[] = new int[n+1];
-        dp[0] = dp[1] = 0;
+        Scanner in = new Scanner(System.in);
+        int num1 = in.nextInt();
+        int num2 = in.nextInt();
+        System.out.println();
+        String str = in.nextLine();
 
-        for (i = 2; i <= n; i++) {
-            dp[i] = dp[i-1]+1;
-            if(i%2==0){
-                dp[i]=Math.min(dp[i],dp[i/2]+1);
+        StringTokenizer st = new StringTokenizer(str," ");
+        if(st.countTokens()!=num2){
+            System.out.println("error");
+        }else {
+            String[] array = new String[st.countTokens()];
+            int i = 0;
+            while (st.hasMoreTokens()) {
+                array[i++] = st.nextToken();
             }
-            if(i%3==0){
-                dp[i]=Math.min(dp[i],dp[i/3]+1);
-            }//
+            for (i = 0; i < num1; i++) {
+                System.out.println(array[i]);
+            }
         }
-        System.out.print(dp[n]);
     }
 }
