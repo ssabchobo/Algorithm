@@ -1,94 +1,35 @@
 import com.sun.scenario.effect.impl.sw.java.JSWColorAdjustPeer;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.*;
 
-public class Main {
-    public static int L;
-    public static int C;
+public class Main{
+    public static void main(String[] args){
+        Scanner in = new Scanner(System.in);
+        int num1 = in.nextInt();
+        int num2 = in.nextInt();
+        int num3 = in.nextInt();
+        int a=1;
+        int b=1;
+        int c=1;
 
-    public static int[] arr;
-    public static boolean[] visited;
+        for(int i = 1;;i++) {
+            if (num1 == a && num2 == b && num3 == c) {
+                System.out.println(i);
+                break;
+            }
+            a++;
+            b++;
+            c++;
 
-    public static final char[] MO_ARR = {'a', 'e', 'i', 'o', 'u'};
-    public static StringBuilder sb;
-
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = null;
-
-        st = new StringTokenizer(br.readLine());
-
-        L = Integer.parseInt(st.nextToken());
-        C = Integer.parseInt(st.nextToken());
-
-        st = new StringTokenizer(br.readLine());
-
-        arr = new int[C];
-        visited = new boolean[C];
-        sb = new StringBuilder();
-
-        for (int i = 0; i < C; i++) {
-            arr[i] = (int) st.nextToken().charAt(0);
-        }
-        Arrays.sort(arr); // 알파벳이 증가하는 형식이니 배열을 정렬한다.
-
-        for (int i = 0; i < C; i++) {
-            if (i + L > C) continue;
-            visited[i] = true;
-            backtracking(i, 1, (char) arr[i] + "");
-            visited[i] = false;
-        }
-
-        System.out.println(sb.toString());
-    }
-
-    public static void backtracking(int idx, int cnt, String str) {
-        if (idx >= arr.length || idx + L - cnt > C) return;
-
-        if (cnt == L) {
-            if (isAble())
-                sb.append(str + "\n");
-            return;
-        }
-
-        for (int i = idx + 1; i < C; i++) {
-            if (visited[i]) continue;
-
-            visited[i] = true;
-            backtracking(i, cnt + 1, str + (char) arr[i]);
-            visited[i] = false;
-        }
-
-
-    }
-
-    public static boolean isAble() {
-        int MO_CNT = 0;
-        int JA_CNT = 0;
-
-        for (int i = 0; i < arr.length; i++) {
-            if (visited[i]) {
-                if (isJa((char) arr[i])) {
-                    JA_CNT += 1;
-                } else {
-                    MO_CNT += 1;
-                }
+            if (a == 16) {
+                a = 1;
+            }
+            if (b == 29) {
+                b = 1;
+            }
+            if (c == 20) {
+                c = 1;
             }
         }
-        // 모음이 최소 한개 자음이 최소 두개 있어야 한다.
-        if (MO_CNT == 0 || JA_CNT < 2) return false;
-
-        return true;
-    }
-
-    public static boolean isJa(char c) {
-        for (int i = 0; i < MO_ARR.length; i++) {
-            if (c == MO_ARR[i]) return false;
-        }
-
-        return true;
     }
 }
