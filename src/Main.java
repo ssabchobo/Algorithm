@@ -3,24 +3,20 @@ import com.sun.scenario.effect.impl.sw.java.JSWColorAdjustPeer;
 import java.util.*;
 
 public class Main{
-    public static void main(String[] args) {
+    public static void main(String[] args){
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
 
-        int[] price = new int[n+1];
-        int[] D = new int[n+1];
+        int[] arr = new int[n+1];
 
-        for(int i = 1; i<=n;i++){
-            price[i] = in.nextInt();
-        }
-
-        for(int i=1;i<=n;i++){
-            for(int j=1;j<=i;j++){
-                if(D[i]==0||D[i]>D[i-j]+price[j]) {
-                    D[i] = price[j] + D[i - j];
-                }
+        for(int i=0;i<=n;i++){
+            if(i<3){
+                arr[i]=i;
+            }else {
+                arr[i] = arr[i - 1] + arr[i - 2];
+                arr[i] %= 10007;
             }
         }
-        System.out.println(D[n]);
+        System.out.println(arr[n]);
     }
 }
