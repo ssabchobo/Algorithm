@@ -12,7 +12,7 @@ public class Main{
         for(int i=0;i<=n;i++){
             if(i<3){
                 arr[i]=i;
-            }else {
+            }else{
                 arr[i] = arr[i - 1] + arr[i - 2];
                 arr[i] %= 10007;
             }
