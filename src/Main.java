@@ -17,10 +17,10 @@ public class Main{
             if(check[i]==1){
                 continue;
             }
-            check[i]=1;
-            list[cnt]=i;
-            dfs(cnt+1);
             check[i]=0;
+            list[cnt]=i;
+            check[i]=0;
+            dfs(cnt+1);
         }
     }
     public static void main(String[] args){
