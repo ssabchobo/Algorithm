@@ -17,6 +17,7 @@ public class Main{
             for(int j=0;j<3;j++){
                 if (i == 1 && j == 1) {
                     continue; // 자신이 포함된 반복문의 끝으로 이동
+                    //ex) star(1,1,3)일때 continue를 통해서 ' '만 출력된다.
                 }
                 star(x+(num*i),y+(num*j),num);
             }
