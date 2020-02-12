@@ -1,25 +1,32 @@
-import com.sun.scenario.effect.impl.sw.java.JSWColorAdjustPeer;
-
 import java.util.*;
 
-public class Main {
+public class Main{
+    static int n,m;
+    static int[] result = new int[9];
+    static boolean[] visit = new boolean[9];
+
+    public static void loop(int level){
+        if(level == m ){
+            for (int i = 0; i < m; i++) {
+                System.out.print(result[i]+" ");
+            }
+            System.out.println();
+            return;
+        }
+        for (int i = 0; i < n; i++) {
+            result[level] = i+1;
+            if(visit[i+1])continue;
+            visit[i+1] = true;
+            loop(level+1);
+            visit[i+1] = false;
+        }
+    }
+
     public static void main(String[] args){
         Scanner in = new Scanner(System.in);
-        long num = in.nextInt();
-        long count=0;
+        n = in.nextInt();
+        m = in.nextInt();
 
-        while(true){
-            if(num%5==0){
-                System.out.println(num/5+count);
-                break;
-            }
-            else if(num<=0){
-                System.out.println("-1");
-                break;
-            }
-            num = num-3;
-            count++;
-        }
-
+        loop(0);
     }
 }
