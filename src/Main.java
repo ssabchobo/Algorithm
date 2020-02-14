@@ -6,16 +6,18 @@ public class Main{
     static int[] result = new int[9];
     static boolean[] visit = new boolean[9];
     static int[] arr;
-    static HashSet set = new HashSet();
+    static HashSet<String> set = new HashSet<String>();
     static Iterator it = set.iterator();
-    static String str;
+    static String[] ans;
+    static String str="";
 
     public static void loop(int level){
         if(level == m){
             for (int i = 0; i < m; i++) {
-                str = result[i]+" ";
+                str += result[i]+" ";
             }
-            System.out.println();
+            set.add(str);
+            str = "";
             return;
         }
         for (int i = 0; i < n; i++) {
@@ -37,9 +39,11 @@ public class Main{
         Arrays.sort(arr);
         loop(0);
 
-        set.add(str);
-        while(it.hasNext()) {
-            System.out.print(it.next());
+
+        ans = set.toArray(new String[0]);
+        Arrays.sort(ans);
+        for(String s : ans){
+            System.out.println(s);
         }
     }
 }
