@@ -1,27 +1,16 @@
 import java.util.*;
 
 public class Main{
-
-    public static int Sum(int a){
-        int sum = 0;
-        while(a>0){
-            sum += a%10;
-            a /=10;
-        }
-        return sum;
-    }
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        int input = in.nextInt();
-        int result=0;
+        int input;
+        input = in.nextInt();
 
-        for (int i = 1; i < input; i++) {
-            int sum = Sum(i);
-            if(i+sum == input){
-                result = i;
-                break;
+        for (int i = 1; i <= input; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print("*");
             }
+            System.out.println();
         }
-        System.out.println(result);
     }
 }
